@@ -83,13 +83,11 @@ class Comment(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='comments',
         verbose_name='Автор'
     )
     post = models.ForeignKey(
         Post,
         on_delete=models.CASCADE,
-        related_name='comments',
         verbose_name='Пост'
     )
     text = models.TextField()
@@ -102,6 +100,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name = 'Коментарий'
         verbose_name_plural = 'Коментарии'
+        default_related_name = 'comments'
         ordering = ('id',)
 
     def __str__(self):
